@@ -1,0 +1,132 @@
+linea 1, palabra reservada: programa
+linea 1, identificador: quicksort
+linea 1, delimitador: ;
+linea 3, palabra reservada: cabecera
+linea 3, ruta: |entrada_estandar.cab|
+rutas -> RUTA
+linea 3, delimitador: ;
+fich_cabecera -> CABECERA rutas
+linea 4, palabra reservada: cabecera
+linea 4, ruta: |normal/src/libreria.cab|
+rutas -> RUTA
+linea 4, delimitador: ;
+fich_cabecera -> CABECERA rutas
+linea 5, palabra reservada: cabecera
+linea 5, ruta: |/usr/local/lib/math.cab|
+rutas -> RUTA
+linea 5, delimitador: ;
+fich_cabecera -> CABECERA rutas
+linea 8, palabra reservada: tipos
+linea 9, identificador: tabla
+linea 9, palabra reservada: es
+linea 9, palabra reservada: array
+linea 9, palabra reservada: de
+linea 9, palabra reservada: entero
+linea 9, delimitador: ;
+linea 10, palabra reservada: fin
+linea 13, palabra reservada: constantes
+linea 14, identificador: enteros
+linea 14, palabra reservada: es
+linea 14, palabra reservada: array
+linea 14, palabra reservada: de
+linea 14, identificador: enteros
+linea 14, operador de asignacion: =
+linea 14, delimitador: (
+linea 14, ctn entera: 59
+linea 14, delimitador: ,
+linea 14, ctn entera: 44
+linea 14, delimitador: ,
+linea 14, ctn entera: #H23
+linea 14, delimitador: ,
+linea 14, ctn entera: #057
+linea 14, delimitador: ,
+linea 14, ctn entera: #hFfF
+linea 14, delimitador: ,
+linea 14, ctn entera: #23
+linea 14, delimitador: )
+linea 14, delimitador: ;
+linea 15, identificador: numeros
+linea 15, palabra reservada: es
+linea 15, palabra reservada: array
+linea 15, palabra reservada: de
+linea 15, palabra reservada: real
+linea 15, operador de asignacion: =
+linea 15, delimitador: (
+linea 15, ctn real: .45
+linea 15, delimitador: ,
+linea 15, ctn real: 38.25
+linea 15, delimitador: ,
+linea 15, ctn real: #hF.#066
+linea 15, delimitador: ,
+linea 15, ctn real: .#523
+linea 15, delimitador: ,
+linea 15, ctn real: 76.#HAF
+linea 15, delimitador: )
+linea 15, delimitador: ;
+linea 16, identificador: caracteres
+linea 16, palabra reservada: es
+linea 16, palabra reservada: array
+linea 16, palabra reservada: de
+linea 16, palabra reservada: caracter
+linea 16, operador de asignacion: =
+linea 16, delimitador: (
+linea 16, caracter: '#171'
+linea 16, delimitador: ,
+linea 16, caracter: 'a'
+linea 16, delimitador: ,
+linea 16, caracter: '#155'
+linea 16, delimitador: ,
+linea 16, caracter: '9'
+linea 16, delimitador: ,
+linea 16, cadena de caracteres: '#n'
+linea 16, delimitador: ,
+linea 16, caracter: '#hD'
+linea 16, delimitador: ,
+linea 16, caracter: '#h1f'
+linea 16, delimitador: ,
+linea 16, cadena de caracteres: '#''
+linea 16, delimitador: ,
+linea 16, cadena de caracteres: '##'
+linea 16, delimitador: )
+linea 16, delimitador: ;
+linea 17, identificador: cadenas
+linea 17, palabra reservada: es
+linea 17, palabra reservada: array
+linea 17, palabra reservada: de
+linea 17, palabra reservada: cadena
+linea 17, operador de asignacion: =
+linea 17, delimitador: (
+linea 17, cadena de caracteres: ''
+linea 17, delimitador: ,
+linea 17, cadena de caracteres: 'hola'
+linea 17, delimitador: ,
+linea 17, cadena de caracteres: '#155#n'
+linea 17, delimitador: ,
+linea 17, cadena de caracteres: '##a'
+linea 17, delimitador: ,
+linea 17, cadena de caracteres: '999'
+linea 17, delimitador: ,
+linea 17, cadena de caracteres: '#hD#'#h1f'
+linea 17, delimitador: )
+linea 17, delimitador: ;
+linea 18, identificador: reales
+linea 18, palabra reservada: es
+linea 18, palabra reservada: array
+linea 18, palabra reservada: de
+linea 18, palabra reservada: real
+linea 18, operador de asignacion: =
+linea 18, delimitador: (
+linea 18, delimitador: )
+linea 18, delimitador: ;
+linea 19, identificador: prueba
+linea 19, palabra reservada: es
+linea 19, palabra reservada: hash
+linea 19, palabra reservada: de
+linea 19, palabra reservada: hash
+linea 19, palabra reservada: de
+linea 19, palabra reservada: entero
+linea 19, operador de asignacion: =
+linea 19, delimitador: (
+linea 19, cadena de caracteres: 'cero'
+linea 19, delimitador: ->
+*****************, syntax error

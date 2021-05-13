@@ -48,10 +48,9 @@ varias_cabeceras : varias_cabeceras CABECERA varias_rutas ';' { printf("fich_cab
                  | 
                  ;
 
-inicio_programa : PROGRAMA IDENTIFICADOR ';' varias_cabeceras
+inicio_programa : PROGRAMA IDENTIFICADOR ';' varias_cabeceras { printf("inic_prog -> PROGRAMA ID ';' librerias \n"); }
 ;
 
-/*CREO QUE ASÍ YA ESTARÍA*/
 declaracion_varias_funciones : declaracion_varias_funciones declaracion_funcion
                              |
                              ;
@@ -61,7 +60,22 @@ estructura_programa : declaraciones_tipos
                       declaraciones_variables
                       declaracion_varias_funciones
                       bloque_instrucciones
+                    | declaraciones_constantes
+                      declaraciones_variables
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | declaraciones_tipos
+                      declaraciones_variables
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | declaraciones_tipos
+                      declaraciones_constantes
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | declaracion_varias_funciones
+                      bloque_instrucciones
                       ;
+
 
 
 /************************/
@@ -84,31 +98,31 @@ varias_referencias : varias_referencias REF
                    | 
                    ;
 
-especificacion_tipo : varias_referencias tipo_basico
+especificacion_tipo : varias_referencias tipo_basico { printf("espec_tipo -> refs tipo_basico\n"); }
 ;
 
 ////////
 
 tipo_basico : IDENTIFICADOR 
-            | tipo_escalar 
-            | tipo_enumerado 
-            | tipo_estructurado
+            | tipo_escalar { printf("tipo basico -> tipo escalar\n"); }
+            | tipo_enumerado { printf("tipo basico -> tipo enum\n"); }
+            | tipo_estructurado { printf("tipo basico -> tipo estructurado\n"); }
             ;
 
-tipo_escalar : ENTERO | REAL | CARACTER | CADENA | FICHERO | EXCEPCION
+tipo_escalar : ENTERO { printf("tipo escalar -> ENTERO\n"); } | REAL { printf("tipo escalar -> REAL\n"); } | CARACTER { printf("tipo escalar -> CARACTER\n"); } | CADENA { printf("tipo escalar -> CADENA\n"); } | FICHERO { printf("tipo escalar -> FICHERO\n"); } | EXCEPCION  { printf("tipo escalar -> EXCEPCION\n"); }
 ;
 
-tipo_enumerado : ARRAY DE especificacion_tipo
-               | HASH DE especificacion_tipo
-               | CONJUNTO DE especificacion_tipo
+tipo_enumerado : ARRAY DE especificacion_tipo { printf("array -> ARRAY DE espec_tipo\n"); }
+               | HASH DE especificacion_tipo { printf("array -> HASH DE espec_tipo\n"); }
+               | CONJUNTO DE especificacion_tipo { printf("array -> CONJUNTO DE espec_tipo\n"); }
 ;
 
 ////////
 
-linea_campo : IDENTIFICADOR ES especificacion_tipo ';'
+linea_campo : IDENTIFICADOR ES especificacion_tipo ';' { printf("declr_tipo -> ID ES espec_tipo\n"); }
 ;
 
-varias_linea_campo : varias_linea_campo linea_campo
+varias_linea_campo : varias_linea_campo linea_campo { printf("lista_declr_tipos -> declr_tipo\n"); }
                    | linea_campo
                    ;
 
@@ -122,10 +136,10 @@ tipo_estructurado : ESTRUCTURA PRINCIPIO varias_linea_campo FIN
 /* declaracion de constantes */
 /*****************************/
 
-declaracion_constante : IDENTIFICADOR ES tipo_basico '=' constante ';'
+declaracion_constante : IDENTIFICADOR ES tipo_basico '=' constante ';' { printf("IDENTIFICADOR ES tipo_basico '=' constante ';'\n"); }
 ;
 
-varias_declaracion_constante : varias_declaracion_constante declaracion_constante
+varias_declaracion_constante : varias_declaracion_constante declaracion_constante { printf("varias_declaracion_constante -> varias_declaracion_constante declaracion_constante\n"); }
                              | declaracion_constante
                              ;
 
@@ -134,12 +148,12 @@ declaraciones_constantes : CONSTANTES varias_declaracion_constante FIN
 
 ////////
 
-constante : CTC_ENTERA
-          | CTC_REAL
-          | CTC_CARACTER
-          | CTC_CADENA
-          | constante_enumerada
-          | constante_estructurada
+constante : CTC_ENTERA { printf("constante -> CTC_ENTERA\n"); }
+          | CTC_REAL { printf("constante -> CTC_REAL\n"); }
+          | CTC_CARACTER { printf("constante -> CTC_CARACTER\n"); }
+          | CTC_CADENA { printf("constante -> CTC_CADENA\n"); }
+          | constante_enumerada { printf("constante -> constante_enumerada\n"); }
+          | constante_estructurada { printf("constante -> constante_estructurada\n"); }
 ;
 
 //////// 
@@ -147,7 +161,7 @@ constante : CTC_ENTERA
 varias_constante : constante_por_coma_asterisco
                 |
                 ;
-constante_por_coma_asterisco : constante_por_coma_asterisco ',' constante
+constante_por_coma_asterisco : constante_por_coma_asterisco ',' constante 
                    | constante
                    ;
 
@@ -158,13 +172,13 @@ elemento_hash_por_coma_asterisco : elemento_hash_por_coma_asterisco ',' elemento
                        | elemento_hash
                        ;
 
-constante_enumerada : '(' varias_constante ')'
-                    | '(' varios_elemento_hash ')'
+constante_enumerada : '(' varias_constante ')' { printf("constante_enumerada -> '(' varias_constante ')'\n"); }
+                    | '(' varios_elemento_hash ')' { printf("constante_enumerada -> '(' varios_elemento_hash ')'\n"); }
 ;
 
 ////////
 
-elemento_hash : CTC_CADENA "->" constante
+elemento_hash : CTC_CADENA "->" constante { printf("CTC_CADENA -> constante\n"); }
               ;
 
 ///////
@@ -243,7 +257,6 @@ varias_declaracion_funcion : varias_declaracion_funcion declaracion_funcion
                            |
                            ;
 
-//OJO AQUÍ por los []?
 cuerpo_funcion : declaraciones_constantes
                  declaraciones_variables
                  varias_declaracion_funcion

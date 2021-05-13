@@ -17,11 +17,18 @@ rutas -> RUTA
 linea 5, delimitador: ;
 fich_cabecera -> CABECERA rutas
 linea 8, palabra reservada: tipos
+inic_prog -> PROGRAMA ID ';' librerias 
 linea 9, identificador: tabla
 linea 9, palabra reservada: es
 linea 9, palabra reservada: array
 linea 9, palabra reservada: de
 linea 9, palabra reservada: entero
+tipo escalar -> ENTERO
+tipo basico -> tipo escalar
+espec_tipo -> refs tipo_basico
+array -> ARRAY DE espec_tipo
+tipo basico -> tipo enum
+espec_tipo -> refs tipo_basico
 linea 9, delimitador: ;
 linea 10, palabra reservada: fin
 linea 13, palabra reservada: constantes
@@ -30,94 +37,162 @@ linea 14, palabra reservada: es
 linea 14, palabra reservada: array
 linea 14, palabra reservada: de
 linea 14, identificador: enteros
+espec_tipo -> refs tipo_basico
+array -> ARRAY DE espec_tipo
+tipo basico -> tipo enum
 linea 14, operador de asignacion: =
 linea 14, delimitador: (
 linea 14, ctn entera: 59
+constante -> CTC_ENTERA
 linea 14, delimitador: ,
 linea 14, ctn entera: 44
+constante -> CTC_ENTERA
 linea 14, delimitador: ,
 linea 14, ctn entera: #H23
+constante -> CTC_ENTERA
 linea 14, delimitador: ,
 linea 14, ctn entera: #057
+constante -> CTC_ENTERA
 linea 14, delimitador: ,
 linea 14, ctn entera: #hFfF
+constante -> CTC_ENTERA
 linea 14, delimitador: ,
 linea 14, ctn entera: #23
+constante -> CTC_ENTERA
 linea 14, delimitador: )
+constante_enumerada -> '(' varias_constante ')'
+constante -> constante_enumerada
 linea 14, delimitador: ;
+IDENTIFICADOR ES tipo_basico '=' constante ';'
 linea 15, identificador: numeros
 linea 15, palabra reservada: es
 linea 15, palabra reservada: array
 linea 15, palabra reservada: de
 linea 15, palabra reservada: real
+tipo escalar -> REAL
+tipo basico -> tipo escalar
+espec_tipo -> refs tipo_basico
+array -> ARRAY DE espec_tipo
+tipo basico -> tipo enum
 linea 15, operador de asignacion: =
 linea 15, delimitador: (
 linea 15, ctn real: .45
+constante -> CTC_REAL
 linea 15, delimitador: ,
 linea 15, ctn real: 38.25
+constante -> CTC_REAL
 linea 15, delimitador: ,
 linea 15, ctn real: #hF.#066
+constante -> CTC_REAL
 linea 15, delimitador: ,
 linea 15, ctn real: .#523
+constante -> CTC_REAL
 linea 15, delimitador: ,
 linea 15, ctn real: 76.#HAF
+constante -> CTC_REAL
 linea 15, delimitador: )
+constante_enumerada -> '(' varias_constante ')'
+constante -> constante_enumerada
 linea 15, delimitador: ;
+IDENTIFICADOR ES tipo_basico '=' constante ';'
+varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 16, identificador: caracteres
 linea 16, palabra reservada: es
 linea 16, palabra reservada: array
 linea 16, palabra reservada: de
 linea 16, palabra reservada: caracter
+tipo escalar -> CARACTER
+tipo basico -> tipo escalar
+espec_tipo -> refs tipo_basico
+array -> ARRAY DE espec_tipo
+tipo basico -> tipo enum
 linea 16, operador de asignacion: =
 linea 16, delimitador: (
 linea 16, caracter: '#171'
+constante -> CTC_CARACTER
 linea 16, delimitador: ,
 linea 16, caracter: 'a'
+constante -> CTC_CARACTER
 linea 16, delimitador: ,
 linea 16, caracter: '#155'
+constante -> CTC_CARACTER
 linea 16, delimitador: ,
 linea 16, caracter: '9'
+constante -> CTC_CARACTER
 linea 16, delimitador: ,
 linea 16, cadena de caracteres: '#n'
+constante -> CTC_CADENA
 linea 16, delimitador: ,
 linea 16, caracter: '#hD'
+constante -> CTC_CARACTER
 linea 16, delimitador: ,
 linea 16, caracter: '#h1f'
+constante -> CTC_CARACTER
 linea 16, delimitador: ,
 linea 16, cadena de caracteres: '#''
+constante -> CTC_CADENA
 linea 16, delimitador: ,
 linea 16, cadena de caracteres: '##'
+constante -> CTC_CADENA
 linea 16, delimitador: )
+constante_enumerada -> '(' varias_constante ')'
+constante -> constante_enumerada
 linea 16, delimitador: ;
+IDENTIFICADOR ES tipo_basico '=' constante ';'
+varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 17, identificador: cadenas
 linea 17, palabra reservada: es
 linea 17, palabra reservada: array
 linea 17, palabra reservada: de
 linea 17, palabra reservada: cadena
+tipo escalar -> CADENA
+tipo basico -> tipo escalar
+espec_tipo -> refs tipo_basico
+array -> ARRAY DE espec_tipo
+tipo basico -> tipo enum
 linea 17, operador de asignacion: =
 linea 17, delimitador: (
 linea 17, cadena de caracteres: ''
 linea 17, delimitador: ,
+constante -> CTC_CADENA
 linea 17, cadena de caracteres: 'hola'
+constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '#155#n'
+constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '##a'
+constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '999'
+constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '#hD#'#h1f'
+constante -> CTC_CADENA
 linea 17, delimitador: )
+constante_enumerada -> '(' varias_constante ')'
+constante -> constante_enumerada
 linea 17, delimitador: ;
+IDENTIFICADOR ES tipo_basico '=' constante ';'
+varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 18, identificador: reales
 linea 18, palabra reservada: es
 linea 18, palabra reservada: array
 linea 18, palabra reservada: de
 linea 18, palabra reservada: real
+tipo escalar -> REAL
+tipo basico -> tipo escalar
+espec_tipo -> refs tipo_basico
+array -> ARRAY DE espec_tipo
+tipo basico -> tipo enum
 linea 18, operador de asignacion: =
 linea 18, delimitador: (
 linea 18, delimitador: )
+constante_enumerada -> '(' varias_constante ')'
+constante -> constante_enumerada
 linea 18, delimitador: ;
+IDENTIFICADOR ES tipo_basico '=' constante ';'
+varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 19, identificador: prueba
 linea 19, palabra reservada: es
 linea 19, palabra reservada: hash
@@ -125,8 +200,17 @@ linea 19, palabra reservada: de
 linea 19, palabra reservada: hash
 linea 19, palabra reservada: de
 linea 19, palabra reservada: entero
+tipo escalar -> ENTERO
+tipo basico -> tipo escalar
+espec_tipo -> refs tipo_basico
+array -> HASH DE espec_tipo
+tipo basico -> tipo enum
+espec_tipo -> refs tipo_basico
+array -> HASH DE espec_tipo
+tipo basico -> tipo enum
 linea 19, operador de asignacion: =
 linea 19, delimitador: (
 linea 19, cadena de caracteres: 'cero'
 linea 19, delimitador: ->
+constante -> CTC_CADENA
 *****************, syntax error

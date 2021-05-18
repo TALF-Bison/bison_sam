@@ -34,29 +34,48 @@ Convencion para nombrar las reglas que incluyen varios (sino se puede mejorar de
 
 */
 
+/*ERRORES EN LA LINEA 19 DEL PRUEBA.MI (Ver bien que pasa) y errores desde la línea 37 en adelante, ver porque no controla esas reglas*/
+
 /************/
 /* programa */
 /************/
-programa : inicio_programa estructura_programa
+programa : inicio_programa bloque_programa
 ;
 
 varias_rutas : varias_rutas ',' RUTA
-              | RUTA { printf("rutas -> RUTA\n"); }
+              | RUTA /*{ printf("rutas -> RUTA\n"); }*/
               ;
 
-varias_cabeceras : varias_cabeceras CABECERA varias_rutas ';' { printf("fich_cabecera -> CABECERA rutas\n"); } 
+varias_cabeceras : varias_cabeceras CABECERA varias_rutas ';' /*{ printf("fich_cabecera -> CABECERA rutas\n"); }*/ 
                  | 
                  ;
 
-inicio_programa : PROGRAMA IDENTIFICADOR ';' varias_cabeceras { printf("inic_prog -> PROGRAMA ID ';' librerias \n"); }
+inicio_programa : PROGRAMA IDENTIFICADOR ';' varias_cabeceras /*{ printf("inic_prog -> PROGRAMA ID ';' librerias \n"); }*/
 ;
 
-declaracion_varias_funciones : declaracion_varias_funciones declaracion_funcion
+declaracion_varias_funciones : declaracion_varias_funciones declaracion_funcion /*{ printf("declaracion_varias_funciones -> declaracion_varias_funciones declaracion_funcion\n"); }*/
                              |
                              ;
 
-estructura_programa : declaraciones_tipos
+bloque_programa : /*No estan ninguna de las tres*/
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | /*Esta solo 1*/
+                      declaraciones_tipos
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | declaraciones_constantes
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | declaraciones_variables
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | /*Estan por pares*/
+                      declaraciones_tipos
                       declaraciones_constantes
+                      declaracion_varias_funciones
+                      bloque_instrucciones
+                    | declaraciones_tipos
                       declaraciones_variables
                       declaracion_varias_funciones
                       bloque_instrucciones
@@ -64,32 +83,41 @@ estructura_programa : declaraciones_tipos
                       declaraciones_variables
                       declaracion_varias_funciones
                       bloque_instrucciones
-                    | declaraciones_tipos
+                    | /*Estan todas*/
+                      declaraciones_tipos
+                      declaraciones_constantes
                       declaraciones_variables
                       declaracion_varias_funciones
                       bloque_instrucciones
-                    | declaraciones_tipos
-                      declaraciones_constantes
-                      declaracion_varias_funciones
-                      bloque_instrucciones
-                    | declaracion_varias_funciones
-                      bloque_instrucciones
                       ;
 
+/*
+bloque_programa : declaraciones_tipos
+                  declaraciones_constantes
+                  declaraciones_variables
+                  declaracion_varias_funciones
+                  bloque_instrucciones
+                  ;
 
+declaraciones_tipos : regla | //nada ;
+declaraciones_constantes : regla | //nada ;
+declaraciones_variables : regla | //nada ;
+
+*/
 
 /************************/
 /* declaracion de tipos */
 /************************/
 
-declaracion_tipo : IDENTIFICADOR ES especificacion_tipo ';'
-;
+declaracion_tipo : IDENTIFICADOR ES especificacion_tipo ';' /*{ printf("declaracion_tipo -> IDENTIFICADOR ES especificacion_tipo ';'\n"); }*/
+            | error '\n'  {yyerrok;}
+            ;
 
-varias_declaracion_tipo : varias_declaracion_tipo declaracion_tipo
+varias_declaracion_tipo : varias_declaracion_tipo declaracion_tipo /*{ printf("varias_declaracion_tipo -> varias_declaracion_tipo declaracion_tipo \n"); }*/
                         | declaracion_tipo
                         ;
 
-declaraciones_tipos : TIPOS varias_declaracion_tipo FIN
+declaraciones_tipos : TIPOS varias_declaracion_tipo FIN 
 ;
 
 ////////
@@ -98,31 +126,32 @@ varias_referencias : varias_referencias REF
                    | 
                    ;
 
-especificacion_tipo : varias_referencias tipo_basico { printf("espec_tipo -> refs tipo_basico\n"); }
+especificacion_tipo : varias_referencias tipo_basico /*{ printf("espec_tipo -> refs tipo_basico\n"); }*/
 ;
 
 ////////
 
 tipo_basico : IDENTIFICADOR 
-            | tipo_escalar { printf("tipo basico -> tipo escalar\n"); }
-            | tipo_enumerado { printf("tipo basico -> tipo enum\n"); }
-            | tipo_estructurado { printf("tipo basico -> tipo estructurado\n"); }
+            | tipo_escalar /*{ printf("tipo basico -> tipo escalar\n"); }*/
+            | tipo_enumerado /*{ printf("tipo basico -> tipo enum\n"); }*/
+            | tipo_estructurado /*{ printf("tipo basico -> tipo estructurado\n"); }*/
             ;
 
-tipo_escalar : ENTERO { printf("tipo escalar -> ENTERO\n"); } | REAL { printf("tipo escalar -> REAL\n"); } | CARACTER { printf("tipo escalar -> CARACTER\n"); } | CADENA { printf("tipo escalar -> CADENA\n"); } | FICHERO { printf("tipo escalar -> FICHERO\n"); } | EXCEPCION  { printf("tipo escalar -> EXCEPCION\n"); }
+tipo_escalar : ENTERO /*{ printf("tipo escalar -> ENTERO\n"); }*/ | REAL /*{ printf("tipo escalar -> REAL\n"); }*/ | CARACTER /*{ printf("tipo escalar -> CARACTER\n"); }*/ | CADENA /*{ printf("tipo escalar -> CADENA\n"); }*/ | FICHERO /*{ printf("tipo escalar -> FICHERO\n"); }*/ | EXCEPCION  /*{ printf("tipo escalar -> EXCEPCION\n"); }*/
 ;
 
-tipo_enumerado : ARRAY DE especificacion_tipo { printf("array -> ARRAY DE espec_tipo\n"); }
-               | HASH DE especificacion_tipo { printf("array -> HASH DE espec_tipo\n"); }
-               | CONJUNTO DE especificacion_tipo { printf("array -> CONJUNTO DE espec_tipo\n"); }
+tipo_enumerado : ARRAY DE especificacion_tipo /*{ printf("array -> ARRAY DE espec_tipo\n"); }*/
+               | HASH DE especificacion_tipo /*{ printf("array -> HASH DE espec_tipo\n"); }*/
+               | CONJUNTO DE especificacion_tipo /*{ printf("array -> CONJUNTO DE espec_tipo\n"); }*/
 ;
 
 ////////
 
-linea_campo : IDENTIFICADOR ES especificacion_tipo ';' { printf("declr_tipo -> ID ES espec_tipo\n"); }
+linea_campo : IDENTIFICADOR ES especificacion_tipo ';' /*{ printf("declr_tipo -> ID ES espec_tipo\n"); }*/
+            | error '\n'  {yyerrok;}
 ;
 
-varias_linea_campo : varias_linea_campo linea_campo { printf("lista_declr_tipos -> declr_tipo\n"); }
+varias_linea_campo : varias_linea_campo linea_campo /*{ printf("lista_declr_tipos -> declr_tipo\n"); }*/
                    | linea_campo
                    ;
 
@@ -136,10 +165,11 @@ tipo_estructurado : ESTRUCTURA PRINCIPIO varias_linea_campo FIN
 /* declaracion de constantes */
 /*****************************/
 
-declaracion_constante : IDENTIFICADOR ES tipo_basico '=' constante ';' { printf("IDENTIFICADOR ES tipo_basico '=' constante ';'\n"); }
-;
+declaracion_constante : IDENTIFICADOR ES tipo_basico '=' constante ';' /*{ printf("IDENTIFICADOR ES tipo_basico '=' constante ';'\n"); }*/
+            | error '\n'  {yyerrok;}
+            ;
 
-varias_declaracion_constante : varias_declaracion_constante declaracion_constante { printf("varias_declaracion_constante -> varias_declaracion_constante declaracion_constante\n"); }
+varias_declaracion_constante : varias_declaracion_constante declaracion_constante /*{ printf("varias_declaracion_constante -> varias_declaracion_constante declaracion_constante\n"); }*/
                              | declaracion_constante
                              ;
 
@@ -148,37 +178,39 @@ declaraciones_constantes : CONSTANTES varias_declaracion_constante FIN
 
 ////////
 
-constante : CTC_ENTERA { printf("constante -> CTC_ENTERA\n"); }
-          | CTC_REAL { printf("constante -> CTC_REAL\n"); }
-          | CTC_CARACTER { printf("constante -> CTC_CARACTER\n"); }
-          | CTC_CADENA { printf("constante -> CTC_CADENA\n"); }
-          | constante_enumerada { printf("constante -> constante_enumerada\n"); }
-          | constante_estructurada { printf("constante -> constante_estructurada\n"); }
+constante : CTC_ENTERA /*{ printf("constante -> CTC_ENTERA\n"); }*/
+          | CTC_REAL /*{ printf("constante -> CTC_REAL\n"); }*/
+          | CTC_CARACTER /*{ printf("constante -> CTC_CARACTER\n"); }*/
+          | CTC_CADENA /*{ printf("constante -> CTC_CADENA\n"); }*/
+          | constante_enumerada /*{ printf("constante -> constante_enumerada\n"); }*/
+          | constante_estructurada /*{ printf("constante -> constante_estructurada\n"); }*/
 ;
 
 //////// 
 
-varias_constante : constante_por_coma_asterisco
-                |
+varias_constante : avarias_costante
                 ;
-constante_por_coma_asterisco : constante_por_coma_asterisco ',' constante 
+avarias_costante : avarias_costante ',' constante 
                    | constante
                    ;
 
-varios_elemento_hash : elemento_hash_por_coma_asterisco
-                     |
-                     ;
-elemento_hash_por_coma_asterisco : elemento_hash_por_coma_asterisco ',' elemento_hash
-                       | elemento_hash
-                       ;
+////////////
 
-constante_enumerada : '(' varias_constante ')' { printf("constante_enumerada -> '(' varias_constante ')'\n"); }
-                    | '(' varios_elemento_hash ')' { printf("constante_enumerada -> '(' varios_elemento_hash ')'\n"); }
+//problemas acá
+varios_elemento_hash : avarios_hashs /*{ printf(""); }*/
+                     ; 
+avarios_hashs : avarios_hashs ',' elemento_hash 
+              | elemento_hash
+              ;
+
+constante_enumerada : '(' varias_constante ')' /*{ printf("constante_enumerada -> '(' varias_constante ')'\n"); }*/
+                    | '(' varios_elemento_hash ')' /*{ printf("constante_enumerada -> '(' varios_elemento_hash ')'\n"); }*/
+                    | '(' ')'
 ;
 
 ////////
 
-elemento_hash : CTC_CADENA "->" constante { printf("CTC_CADENA -> constante\n"); }
+elemento_hash : CTC_CADENA FLECHA_DCHA constante /*{ printf("CTC_CADENA -> constante\n"); }*/
               ;
 
 ///////
@@ -215,7 +247,7 @@ varias_declaracion_variables : varias_declaracion_variables declaracion_variable
                              | declaracion_variables
                              ;
 
-declaraciones_variables : VARIABLES varias_declaracion_variables FIN
+declaraciones_variables : VARIABLES varias_declaracion_variables FIN /*{ printf("declaraciones_variables -> VARIABLES varias_declaracion_variables FIN\n"); }*/
 ;
 
 
@@ -223,10 +255,10 @@ declaraciones_variables : VARIABLES varias_declaracion_variables FIN
 /* declaracion de funciones */
 /****************************/
 
-declaracion_funcion : FUNCION IDENTIFICADOR "->" tipo_salida
-                      cuerpo_funcion
-                    | FUNCION IDENTIFICADOR lista_parametros "->" tipo_salida
-                      cuerpo_funcion
+declaracion_funcion : FUNCION IDENTIFICADOR FLECHA_DCHA tipo_salida
+                      cuerpo_funcion /*{ printf("declaracion_funcion ->  FUNCION IDENTIFICADOR FLECHA_DCHA tipo_salida cuerpo_funcion\n"); }*/
+                    | FUNCION IDENTIFICADOR lista_parametros FLECHA_DCHA tipo_salida
+                      cuerpo_funcion /*{ printf("declaracion_funcion ->  FUNCION IDENTIFICADOR lista_parametros FLECHA_DCHA tipo_salida cuerpo_funcion\n"); }*/
                     ;
 
 ////////
@@ -257,17 +289,20 @@ varias_declaracion_funcion : varias_declaracion_funcion declaracion_funcion
                            |
                            ;
 
-cuerpo_funcion : declaraciones_constantes
-                 declaraciones_variables
-                 varias_declaracion_funcion
-                 bloque_instrucciones
-               | declaraciones_constantes
+cuerpo_funcion : /*No está ninguna*/
+                varias_declaracion_funcion
+                bloque_instrucciones
+               | /*Una por caso*/
+                 declaraciones_constantes
                  varias_declaracion_funcion
                  bloque_instrucciones
                | declaraciones_variables
                  varias_declaracion_funcion
-                 bloque_instrucciones 
-               | varias_declaracion_funcion
+                 bloque_instrucciones
+               | /*Aparecen ambas*/ 
+                 declaraciones_constantes
+                 declaraciones_variables
+                 varias_declaracion_funcion
                  bloque_instrucciones
                ;
 
@@ -328,24 +363,25 @@ v_asignacion : v_asignacion ',' asignacion
               ;
 
 instruccion_bucle : MIENTRAS '(' expresion ')' accion
+                  | MIENTRAS '(' ')' accion
                   | HACER accion MIENTRAS '(' expresion ')' ';'
                   | PARA '(' v_asignacion ';' expresion ';' v_asignacion ')' accion
                   | PARA CADA IDENTIFICADOR '(' expresion ')' accion
-;
+                  ;
 
 
 
 ////////////////
 
-instruccion_salto : SALTAR IDENTIFICADOR ';' | CONTINUAR ';' | ESCAPE ';'
+instruccion_salto : SALTAR IDENTIFICADOR ';' | CONTINUAR ';' | ESCAPE ';' | error '\n'  {yyerrok;}
 ;
 
 instruccion_destino_salto : ETIQUETA IDENTIFICADOR ';'
-;
+                          ;
 
 instruccion_devolver : DEVOLVER ';'
                      | DEVOLVER expresion ';'
-;
+                     ;
 
 instruccion_vacia : ';'
 ;
@@ -404,16 +440,18 @@ expresion_basica : IDENTIFICADOR
 indice : '[' expresion ']' | '{' expresion '}'
 ;
 
-varias_expresion_por_coma_asterisco : varias_expresion
-                                    |
+varias_expresion_por_coma_asterisco : varias_expresion /*{ printf(""); }*/
                                     ;
 varias_expresion : varias_expresion ',' expresion
                 | expresion
                 ;
 
 expresion_funcional : IDENTIFICADOR '(' varias_expresion_por_coma_asterisco ')'
+                    | IDENTIFICADOR '(' ')'
 ;
 
+//Está dando un monton de problemas 
+//mirar las expresiones en el fichero de simple 
 
 expresion : expresion_logica 
           | expresion_logica SI expresion SINO expresion

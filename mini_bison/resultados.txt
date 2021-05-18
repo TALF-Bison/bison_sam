@@ -3,32 +3,19 @@ linea 1, identificador: quicksort
 linea 1, delimitador: ;
 linea 3, palabra reservada: cabecera
 linea 3, ruta: |entrada_estandar.cab|
-rutas -> RUTA
 linea 3, delimitador: ;
-fich_cabecera -> CABECERA rutas
 linea 4, palabra reservada: cabecera
 linea 4, ruta: |normal/src/libreria.cab|
-rutas -> RUTA
 linea 4, delimitador: ;
-fich_cabecera -> CABECERA rutas
 linea 5, palabra reservada: cabecera
 linea 5, ruta: |/usr/local/lib/math.cab|
-rutas -> RUTA
 linea 5, delimitador: ;
-fich_cabecera -> CABECERA rutas
 linea 8, palabra reservada: tipos
-inic_prog -> PROGRAMA ID ';' librerias 
 linea 9, identificador: tabla
 linea 9, palabra reservada: es
 linea 9, palabra reservada: array
 linea 9, palabra reservada: de
 linea 9, palabra reservada: entero
-tipo escalar -> ENTERO
-tipo basico -> tipo escalar
-espec_tipo -> refs tipo_basico
-array -> ARRAY DE espec_tipo
-tipo basico -> tipo enum
-espec_tipo -> refs tipo_basico
 linea 9, delimitador: ;
 linea 10, palabra reservada: fin
 linea 13, palabra reservada: constantes
@@ -37,162 +24,94 @@ linea 14, palabra reservada: es
 linea 14, palabra reservada: array
 linea 14, palabra reservada: de
 linea 14, identificador: enteros
-espec_tipo -> refs tipo_basico
-array -> ARRAY DE espec_tipo
-tipo basico -> tipo enum
 linea 14, operador de asignacion: =
 linea 14, delimitador: (
-linea 14, ctn entera: 59
-constante -> CTC_ENTERA
+linea 14, constante entera: 59
 linea 14, delimitador: ,
-linea 14, ctn entera: 44
-constante -> CTC_ENTERA
+linea 14, constante entera: 44
 linea 14, delimitador: ,
-linea 14, ctn entera: #H23
-constante -> CTC_ENTERA
+linea 14, constante entera: #H23
 linea 14, delimitador: ,
-linea 14, ctn entera: #057
-constante -> CTC_ENTERA
+linea 14, constante entera: #057
 linea 14, delimitador: ,
-linea 14, ctn entera: #hFfF
-constante -> CTC_ENTERA
+linea 14, constante entera: #hFfF
 linea 14, delimitador: ,
-linea 14, ctn entera: #23
-constante -> CTC_ENTERA
+linea 14, constante entera: #23
 linea 14, delimitador: )
-constante_enumerada -> '(' varias_constante ')'
-constante -> constante_enumerada
 linea 14, delimitador: ;
-IDENTIFICADOR ES tipo_basico '=' constante ';'
 linea 15, identificador: numeros
 linea 15, palabra reservada: es
 linea 15, palabra reservada: array
 linea 15, palabra reservada: de
 linea 15, palabra reservada: real
-tipo escalar -> REAL
-tipo basico -> tipo escalar
-espec_tipo -> refs tipo_basico
-array -> ARRAY DE espec_tipo
-tipo basico -> tipo enum
 linea 15, operador de asignacion: =
 linea 15, delimitador: (
-linea 15, ctn real: .45
-constante -> CTC_REAL
+linea 15, constante real: .45
 linea 15, delimitador: ,
-linea 15, ctn real: 38.25
-constante -> CTC_REAL
+linea 15, constante real: 38.25
 linea 15, delimitador: ,
-linea 15, ctn real: #hF.#066
-constante -> CTC_REAL
+linea 15, constante real: #hF.#066
 linea 15, delimitador: ,
-linea 15, ctn real: .#523
-constante -> CTC_REAL
+linea 15, constante real: .#523
 linea 15, delimitador: ,
-linea 15, ctn real: 76.#HAF
-constante -> CTC_REAL
+linea 15, constante real: 76.#HAF
 linea 15, delimitador: )
-constante_enumerada -> '(' varias_constante ')'
-constante -> constante_enumerada
 linea 15, delimitador: ;
-IDENTIFICADOR ES tipo_basico '=' constante ';'
-varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 16, identificador: caracteres
 linea 16, palabra reservada: es
 linea 16, palabra reservada: array
 linea 16, palabra reservada: de
 linea 16, palabra reservada: caracter
-tipo escalar -> CARACTER
-tipo basico -> tipo escalar
-espec_tipo -> refs tipo_basico
-array -> ARRAY DE espec_tipo
-tipo basico -> tipo enum
 linea 16, operador de asignacion: =
 linea 16, delimitador: (
-linea 16, caracter: '#171'
-constante -> CTC_CARACTER
+linea 16, cadena de caracteres: '#171'
 linea 16, delimitador: ,
-linea 16, caracter: 'a'
-constante -> CTC_CARACTER
+linea 16, cadena de caracteres: 'a'
 linea 16, delimitador: ,
-linea 16, caracter: '#155'
-constante -> CTC_CARACTER
+linea 16, cadena de caracteres: '#155'
 linea 16, delimitador: ,
-linea 16, caracter: '9'
-constante -> CTC_CARACTER
+linea 16, cadena de caracteres: '9'
 linea 16, delimitador: ,
 linea 16, cadena de caracteres: '#n'
-constante -> CTC_CADENA
 linea 16, delimitador: ,
-linea 16, caracter: '#hD'
-constante -> CTC_CARACTER
+linea 16, cadena de caracteres: '#hD'
 linea 16, delimitador: ,
-linea 16, caracter: '#h1f'
-constante -> CTC_CARACTER
+linea 16, cadena de caracteres: '#h1f'
 linea 16, delimitador: ,
 linea 16, cadena de caracteres: '#''
-constante -> CTC_CADENA
 linea 16, delimitador: ,
 linea 16, cadena de caracteres: '##'
-constante -> CTC_CADENA
 linea 16, delimitador: )
-constante_enumerada -> '(' varias_constante ')'
-constante -> constante_enumerada
 linea 16, delimitador: ;
-IDENTIFICADOR ES tipo_basico '=' constante ';'
-varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 17, identificador: cadenas
 linea 17, palabra reservada: es
 linea 17, palabra reservada: array
 linea 17, palabra reservada: de
 linea 17, palabra reservada: cadena
-tipo escalar -> CADENA
-tipo basico -> tipo escalar
-espec_tipo -> refs tipo_basico
-array -> ARRAY DE espec_tipo
-tipo basico -> tipo enum
 linea 17, operador de asignacion: =
 linea 17, delimitador: (
 linea 17, cadena de caracteres: ''
 linea 17, delimitador: ,
-constante -> CTC_CADENA
 linea 17, cadena de caracteres: 'hola'
-constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '#155#n'
-constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '##a'
-constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '999'
-constante -> CTC_CADENA
 linea 17, delimitador: ,
 linea 17, cadena de caracteres: '#hD#'#h1f'
-constante -> CTC_CADENA
 linea 17, delimitador: )
-constante_enumerada -> '(' varias_constante ')'
-constante -> constante_enumerada
 linea 17, delimitador: ;
-IDENTIFICADOR ES tipo_basico '=' constante ';'
-varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 18, identificador: reales
 linea 18, palabra reservada: es
 linea 18, palabra reservada: array
 linea 18, palabra reservada: de
 linea 18, palabra reservada: real
-tipo escalar -> REAL
-tipo basico -> tipo escalar
-espec_tipo -> refs tipo_basico
-array -> ARRAY DE espec_tipo
-tipo basico -> tipo enum
 linea 18, operador de asignacion: =
 linea 18, delimitador: (
 linea 18, delimitador: )
-constante_enumerada -> '(' varias_constante ')'
-constante -> constante_enumerada
 linea 18, delimitador: ;
-IDENTIFICADOR ES tipo_basico '=' constante ';'
-varias_declaracion_constante -> varias_declaracion_constante declaracion_constante
 linea 19, identificador: prueba
 linea 19, palabra reservada: es
 linea 19, palabra reservada: hash
@@ -200,17 +119,366 @@ linea 19, palabra reservada: de
 linea 19, palabra reservada: hash
 linea 19, palabra reservada: de
 linea 19, palabra reservada: entero
-tipo escalar -> ENTERO
-tipo basico -> tipo escalar
-espec_tipo -> refs tipo_basico
-array -> HASH DE espec_tipo
-tipo basico -> tipo enum
-espec_tipo -> refs tipo_basico
-array -> HASH DE espec_tipo
-tipo basico -> tipo enum
 linea 19, operador de asignacion: =
 linea 19, delimitador: (
 linea 19, cadena de caracteres: 'cero'
-linea 19, delimitador: ->
-constante -> CTC_CADENA
+linea 19, flecha derecha: ->
+linea 19, delimitador: (
+linea 19, cadena de caracteres: 'uno'
+linea 19, flecha derecha: ->
+linea 19, constante entera: 1
+linea 19, delimitador: ,
+linea 19, cadena de caracteres: 'dos'
+linea 19, flecha derecha: ->
+linea 19, constante entera: 2
+linea 19, delimitador: )
+linea 19, delimitador: ,
+linea 19, cadena de caracteres: 'tres'
+linea 19, flecha derecha: ->
+linea 19, delimitador: (
+linea 19, delimitador: )
+linea 19, delimitador: )
+linea 19, delimitador: ;
+linea 20, identificador: mi_cadena
+linea 20, palabra reservada: es
+linea 20, palabra reservada: cadena
+linea 20, operador de asignacion: =
+linea 22, cadena de caracteres: 'primera #
+     segunda #
+     tercera'
+linea 22, delimitador: ;
+linea 23, palabra reservada: fin
+linea 26, palabra reservada: variables
+linea 27, identificador: entrada
+linea 27, delimitador: ,
+linea 27, identificador: salida
+linea 27, delimitador: :
+linea 27, identificador: tabla
+linea 27, delimitador: ;
+linea 28, identificador: num_elems
+linea 28, delimitador: ,
+linea 28, identificador: i
+linea 28, delimitador: :
+linea 28, palabra reservada: entero
+linea 28, delimitador: ;
+linea 29, palabra reservada: fin
+linea 36, palabra reservada: funcion
+linea 36, identificador: obtener_entrada
+linea 36, delimitador: (
+linea 36, identificador: entrada
+linea 36, delimitador: :
+linea 36, palabra reservada: ref
+linea 36, identificador: tabla
+linea 36, delimitador: ;
+linea 36, identificador: num_elems
+linea 36, delimitador: :
+linea 36, palabra reservada: entero
+linea 36, delimitador: )
+linea 36, flecha derecha: ->
+linea 36, palabra reservada: nada
+linea 37, palabra reservada: variables
+linea 38, identificador: indice
+linea 38, delimitador: :
+linea 38, palabra reservada: entero
+linea 38, delimitador: ;
+linea 39, palabra reservada: fin
+linea 40, palabra reservada: principio
+linea 41, identificador: indice
+linea 41, operador de asignacion: =
+linea 41, constante entera: 1
 *****************, syntax error
+linea 41, delimitador: ;
+linea 42, palabra reservada: mientras
+linea 42, delimitador: (
+linea 42, identificador: indice
+linea 42, operador: =<
+linea 42, identificador: num_elems
+linea 42, delimitador: )
+linea 43, identificador: entrada
+linea 43, operador indireccion: ^.
+linea 43, operador de acceso: [
+linea 43, identificador: indice
+linea 43, operador de acceso: ]
+linea 43, operador de asignacion: =
+linea 43, identificador: aleatorio
+linea 43, delimitador: (
+linea 43, delimitador: )
+linea 43, delimitador: ;
+linea 44, palabra reservada: fin
+linea 52, palabra reservada: funcion
+linea 52, identificador: ordenar
+linea 52, delimitador: (
+linea 52, identificador: entrada
+linea 52, delimitador: :
+linea 52, identificador: tabla
+linea 52, delimitador: ;
+linea 52, identificador: num_elems
+linea 52, delimitador: :
+linea 52, palabra reservada: entero
+linea 52, delimitador: )
+linea 52, flecha derecha: ->
+linea 52, palabra reservada: nada
+linea 55, palabra reservada: funcion
+linea 55, identificador: intercambio
+linea 55, delimitador: (
+linea 55, identificador: entrada
+linea 55, delimitador: :
+linea 55, identificador: tabla
+linea 55, delimitador: ;
+linea 55, identificador: i
+linea 55, delimitador: ,
+linea 55, identificador: j
+linea 55, delimitador: :
+linea 55, palabra reservada: entero
+linea 55, delimitador: )
+linea 55, flecha derecha: ->
+linea 55, palabra reservada: nada
+linea 56, palabra reservada: variables
+linea 57, identificador: k
+linea 57, delimitador: :
+linea 57, palabra reservada: entero
+linea 57, delimitador: ;
+linea 58, palabra reservada: fin
+linea 59, palabra reservada: principio
+linea 60, identificador: k
+linea 60, operador de asignacion: =
+linea 60, identificador: i
+linea 60, delimitador: ;
+linea 61, identificador: entrada
+linea 61, operador indireccion: ^.
+linea 61, operador de acceso: [
+linea 61, identificador: i
+linea 61, operador de acceso: ]
+linea 61, operador de asignacion: =
+linea 61, identificador: j
+linea 61, delimitador: ;
+linea 62, identificador: entrada
+linea 62, operador indireccion: ^.
+linea 62, operador de acceso: [
+linea 62, identificador: j
+linea 62, operador de acceso: ]
+linea 62, operador de asignacion: =
+linea 62, identificador: k
+linea 62, delimitador: ;
+linea 63, palabra reservada: fin
+linea 65, palabra reservada: funcion
+linea 65, identificador: dividir
+linea 65, delimitador: (
+linea 65, identificador: entrada
+linea 65, delimitador: :
+linea 65, palabra reservada: ref
+linea 65, identificador: tabla
+linea 65, delimitador: ;
+linea 65, identificador: comienzo
+linea 65, delimitador: ,
+linea 65, identificador: final
+linea 65, delimitador: :
+linea 65, palabra reservada: entero
+linea 65, delimitador: )
+linea 65, flecha derecha: ->
+linea 65, palabra reservada: entero
+linea 66, palabra reservada: variables
+linea 67, identificador: i
+linea 67, delimitador: ,
+linea 67, identificador: j
+linea 67, delimitador: :
+linea 67, palabra reservada: entero
+linea 67, delimitador: ;
+linea 68, palabra reservada: fin
+linea 69, palabra reservada: principio
+linea 70, identificador: pivote
+linea 70, operador de asignacion: =
+linea 70, identificador: entrada
+linea 70, operador indireccion: ^.
+linea 70, operador de acceso: [
+linea 70, identificador: comienzo
+linea 70, operador de acceso: ]
+linea 70, delimitador: ;
+linea 71, identificador: i
+linea 71, operador de asignacion: =
+linea 71, identificador: comienzo
+linea 71, operador aritmetico: +
+linea 71, constante entera: 1
+linea 71, delimitador: ;
+linea 72, identificador: j
+linea 72, operador de asignacion: =
+linea 72, identificador: final
+linea 72, delimitador: ;
+linea 74, palabra reservada: mientras
+linea 74, delimitador: (
+linea 74, identificador: i
+linea 74, operador: =<
+linea 74, identificador: j
+linea 74, delimitador: )
+linea 74, palabra reservada: principio
+linea 75, palabra reservada: mientras
+linea 75, delimitador: (
+linea 75, identificador: i
+linea 75, operador: =<
+linea 75, identificador: final
+linea 75, operador logico AND: &&
+linea 75, identificador: tabla
+linea 75, operador de acceso: [
+linea 75, identificador: i
+linea 75, operador de acceso: ]
+linea 75, operador relacional: <
+linea 75, identificador: pivote
+linea 75, delimitador: )
+linea 76, identificador: i
+linea 76, operador asignacion suma: =+
+linea 76, constante entera: 1
+linea 76, delimitador: ;
+linea 77, palabra reservada: mientras
+linea 77, delimitador: (
+linea 77, identificador: j
+linea 77, operador relacional: >
+linea 77, identificador: comienzo
+linea 77, operador logico AND: &&
+linea 77, identificador: tabla
+linea 77, operador de acceso: [
+linea 77, identificador: j
+linea 77, operador de acceso: ]
+linea 77, operador: =>
+linea 77, identificador: pivote
+linea 77, delimitador: )
+linea 78, identificador: j
+linea 78, operador asignacion resta: =-
+linea 78, constante entera: 1
+linea 78, delimitador: ;
+linea 79, palabra reservada: si
+linea 79, delimitador: (
+linea 79, identificador: i
+linea 79, operador relacional: <
+linea 79, identificador: j
+linea 79, delimitador: )
+linea 80, identificador: intercambio
+linea 80, delimitador: (
+linea 80, identificador: entrada
+linea 80, delimitador: ,
+linea 80, identificador: i
+linea 80, delimitador: ,
+linea 80, identificador: j
+linea 80, delimitador: )
+linea 80, delimitador: ;
+linea 81, palabra reservada: fin
+linea 82, palabra reservada: fin
+linea 84, identificador: intercambio
+linea 84, delimitador: (
+linea 84, identificador: entrada
+linea 84, delimitador: ,
+linea 84, identificador: comienzo
+linea 84, delimitador: ,
+linea 84, identificador: final
+linea 84, delimitador: )
+linea 84, delimitador: ;
+linea 86, palabra reservada: devolver
+linea 86, identificador: j
+linea 86, delimitador: ;
+linea 87, palabra reservada: fin
+linea 89, palabra reservada: funcion
+linea 89, identificador: quicksort
+linea 89, delimitador: (
+linea 89, identificador: entrada
+linea 89, delimitador: :
+linea 89, palabra reservada: ref
+linea 89, identificador: tabla
+linea 89, delimitador: ;
+linea 89, identificador: comienzo
+linea 89, delimitador: ,
+linea 89, identificador: final
+linea 89, delimitador: :
+linea 89, palabra reservada: entero
+linea 89, delimitador: )
+linea 89, flecha derecha: ->
+linea 89, palabra reservada: nada
+linea 90, palabra reservada: variables
+linea 91, identificador: indice
+linea 91, delimitador: :
+linea 91, palabra reservada: entero
+linea 91, delimitador: ;
+linea 92, palabra reservada: fin
+linea 93, palabra reservada: principio
+linea 94, palabra reservada: si
+linea 94, delimitador: (
+linea 94, identificador: comienzo
+linea 94, operador relacional: <
+linea 94, identificador: final
+linea 94, delimitador: )
+linea 94, palabra reservada: principio
+linea 95, identificador: indice
+linea 95, operador de asignacion: =
+linea 95, identificador: dividir
+linea 95, delimitador: (
+linea 95, identificador: comienzo
+linea 95, delimitador: ,
+linea 95, identificador: final
+linea 95, delimitador: )
+linea 95, delimitador: ;
+linea 96, identificador: quicksort
+linea 96, delimitador: (
+linea 96, identificador: entrada
+linea 96, delimitador: ,
+linea 96, identificador: comienzo
+linea 96, delimitador: ,
+linea 96, identificador: indice
+linea 96, operador aritmetico: -
+linea 96, constante entera: 1
+linea 96, delimitador: )
+linea 96, delimitador: ;
+linea 97, identificador: quicksort
+linea 97, delimitador: (
+linea 97, identificador: entrada
+linea 97, delimitador: ,
+linea 97, identificador: indice
+linea 97, operador aritmetico: +
+linea 97, constante entera: 1
+linea 97, delimitador: ,
+linea 97, identificador: final
+linea 97, delimitador: )
+linea 97, delimitador: ;
+linea 98, palabra reservada: fin
+linea 99, palabra reservada: fin
+linea 100, palabra reservada: fin
+linea 103, palabra reservada: principio
+linea 104, identificador: quicksort
+linea 104, delimitador: (
+linea 104, identificador: entrada
+linea 104, delimitador: ,
+linea 104, constante entera: 1
+linea 104, delimitador: ,
+linea 104, identificador: num_elems
+linea 104, delimitador: )
+linea 104, delimitador: ;
+linea 105, palabra reservada: fin
+linea 108, palabra reservada: principio
+linea 110, identificador: num_elems
+linea 110, operador de asignacion: =
+linea 110, constante entera: 50
+linea 110, delimitador: ;
+linea 111, identificador: obtener_entrada
+linea 111, delimitador: (
+linea 111, operador de acceso: \
+linea 111, identificador: entrada
+linea 111, delimitador: ,
+linea 111, identificador: num_elems
+linea 111, delimitador: )
+linea 111, delimitador: ;
+linea 112, identificador: ordenar
+linea 112, delimitador: (
+linea 112, identificador: entrada
+linea 112, delimitador: ,
+linea 112, identificador: num_elems
+linea 112, delimitador: )
+linea 112, delimitador: ;
+linea 114, palabra reservada: para
+linea 114, palabra reservada: cada
+linea 114, identificador: elemento
+linea 114, delimitador: (
+linea 114, identificador: entrada
+linea 114, delimitador: )
+linea 115, identificador: linea_consola
+linea 115, delimitador: (
+linea 115, identificador: entrada
+linea 115, delimitador: )
+linea 115, delimitador: ;
+linea 117, palabra reservada: fin

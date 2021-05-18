@@ -23,31 +23,18 @@
 
 %%
 
-/*
-Convencion para nombrar las reglas que incluyen varios (sino se puede mejorar dejar estas)
-
-[A]+ v_A_mas
-
-[A]* v_A_ast
-
-(A)+ v_A_mcoma
-
-(A)* v_A_acoma
-
-*/
-
 /************/
 /* programa */
 /************/
 programa : inicio_programa bloque_programa { printf("programa -> inicio_programa bloque_programa\n"); }
 ;
 
-varias_rutas : varias_rutas ',' RUTA
+varias_rutas : varias_rutas ',' RUTA { printf("varias_rutas -> varias_rutas ',' RUTA\n"); }
               | RUTA { printf("rutas -> RUTA\n"); }
               ;
 
 varias_cabeceras : varias_cabeceras CABECERA varias_rutas ';' { printf("fich_cabecera -> CABECERA rutas\n"); } 
-                 | 
+                 |
                  ;
 
 inicio_programa : PROGRAMA IDENTIFICADOR ';' varias_cabeceras { printf("inic_prog -> PROGRAMA ID ';' librerias \n"); }
@@ -84,7 +71,6 @@ varias_declaracion_tipo : varias_declaracion_tipo declaracion_tipo { printf("var
 declaraciones_tipos : TIPOS varias_declaracion_tipo FIN | /*Cadena vacia*/
 ;
 
-////////
 
 varias_referencias : varias_referencias REF 
                    | 
@@ -92,8 +78,6 @@ varias_referencias : varias_referencias REF
 
 especificacion_tipo : varias_referencias tipo_basico { printf("espec_tipo -> refs tipo_basico\n"); }
 ;
-
-////////
 
 tipo_basico : IDENTIFICADOR { printf("tipo basico -> IDENTIFICADOR\n"); }
             | tipo_escalar { printf("tipo basico -> tipo escalar\n"); }
@@ -115,8 +99,6 @@ tipo_enumerado : ARRAY DE especificacion_tipo { printf("array -> ARRAY DE espec_
                | CONJUNTO DE especificacion_tipo { printf("array -> CONJUNTO DE espec_tipo\n"); }
 ;
 
-////////
-
 linea_campo : IDENTIFICADOR ES especificacion_tipo ';' { printf("declr_tipo -> ID ES espec_tipo\n"); }
             | error '\n'  {yyerrok;}
 ;
@@ -128,8 +110,6 @@ varias_linea_campo : varias_linea_campo linea_campo { printf("lista_declr_tipos 
 tipo_estructurado : ESTRUCTURA PRINCIPIO varias_linea_campo FIN { printf("ESTRUCTURA PRINCIPIO varias_linea_campo FIN\n"); }
                   | UNION PRINCIPIO varias_linea_campo FIN { printf("UNION PRINCIPIO varias_linea_campo FIN\n"); }
 ;
-
-
 
 /*****************************/
 /* declaracion de constantes */
@@ -146,7 +126,6 @@ varias_declaracion_constante : varias_declaracion_constante declaracion_constant
 declaraciones_constantes : CONSTANTES varias_declaracion_constante FIN | /*Cadena vacia*/
 ;
 
-////////
 
 constante : CTC_ENTERA { printf("constante -> CTC_ENTERA\n"); }
           | CTC_REAL { printf("constante -> CTC_REAL\n"); }
@@ -156,7 +135,6 @@ constante : CTC_ENTERA { printf("constante -> CTC_ENTERA\n"); }
           | constante_estructurada { printf("constante -> constante_estructurada\n"); }
 ;
 
-//////// 
 
 varias_constante : avarias_costante
                 ;
@@ -164,9 +142,7 @@ avarias_costante : avarias_costante ',' constante { printf("avarias_constante ->
                    | constante { printf("avarias_constante -> constante \n"); }
                    ;
 
-////////////
 
-//problemas acá
 varios_elemento_hash : avarios_hashs { printf("varios_elemento_hash -> avarios_hashs\n"); }
                      ; 
 avarios_hashs : avarios_hashs ',' elemento_hash { printf("avarios_hashs -> avarios_hashs ',' elemento_hash\n"); } 
@@ -178,12 +154,10 @@ constante_enumerada : '(' varias_constante ')' { printf("constante_enumerada -> 
                     | '(' ')' { printf("constante_enumerada -> '(' ')'\n"); }
 ;
 
-////////
 
 elemento_hash : CTC_CADENA FLECHA_DCHA constante { printf("CTC_CADENA -> constante\n"); }
               ;
 
-///////
 
 campo_constante: IDENTIFICADOR '=' constante
                | IDENTIFICADOR EQ constante
@@ -233,7 +207,6 @@ declaracion_funcion : FUNCION IDENTIFICADOR FLECHA_DCHA tipo_salida
                       cuerpo_funcion { printf("declaracion_funcion ->  FUNCION IDENTIFICADOR lista_parametros FLECHA_DCHA tipo_salida cuerpo_funcion\n"); }
                     ;
 
-////////
 
 varios_parametros : varios_parametros parametros ';'
                   | 
@@ -242,7 +215,6 @@ varios_parametros : varios_parametros parametros ';'
 lista_parametros : '(' varios_parametros parametros ')'
 ;
 
-//////////////////
 
 varias_expresion_constante_por_coma_mas : varias_expresion_constante_por_coma_mas ',' expresion_constante
                                         | expresion_constante
@@ -252,7 +224,6 @@ parametros : varios_identificadores_por_coma_mas ':' especificacion_tipo
             | varios_identificadores_por_coma_mas ':' especificacion_tipo '=' varias_expresion_constante_por_coma_mas
             ;
 
-////////////////
 
 tipo_salida : especificacion_tipo | NADA
 ;
@@ -272,8 +243,8 @@ declaraciones_constantes : regla | //nada ;
 declaraciones_variables : regla | //nada ;
 */
 
-varias_instrucciones : varias_instrucciones instruccion
-                     | instruccion
+varias_instrucciones : varias_instrucciones instruccion { printf("varias_instrucciones ->  varias_instrucciones instruccion"); }
+                     | instruccion { printf("varias_instrucciones -> instruccion"); }
                      ;
 
 bloque_instrucciones : PRINCIPIO varias_instrucciones FIN { printf("bloque_instrucciones ->  PRINCIPIO instrucciones FIN"); }
@@ -298,7 +269,7 @@ instruccion : instruccion_expresion { printf("instruccion -> instruccion_expresi
             | instruccion_captura_excepcion { printf("instruccion -> instruccion_captura_excepcion\n"); }
 ;
 
-asignacion : expresion_indexada operador_asignacion expresion
+asignacion : expresion_indexada operador_asignacion expresion { printf("asignacion -> expresion_indexada operador_asignacion expresion\n"); } 
 ;
 
 operador_asignacion : '='   { printf("operador_asignacion -> '='\n"); } 
@@ -316,9 +287,7 @@ operador_asignacion : '='   { printf("operador_asignacion -> '='\n"); }
                     | error '\n' {yyerrok;}
 ;
 
-/////////////////
-
-otros_casos : SI ENCAMBIO '(' expresion ')' accion
+otros_casos : SI ENCAMBIO '(' expresion ')' accion { printf("otros_casos -> SI ENCAMBIO '(' expresion ')' accion\n"); } 
 ;
 
 v_otros_casos : v_otros_casos otros_casos
@@ -333,8 +302,6 @@ instruccion_bifurcacion : SI expresion accion v_otros_casos FIN
 accion : instruccion | bloque_instrucciones
 ;
 
-////////////////
-
 //separados por coma +
 v_asignacion : v_asignacion ',' asignacion
               | asignacion
@@ -347,9 +314,6 @@ instruccion_bucle : MIENTRAS '(' expresion ')' accion {printf("instruccion_bucle
                   | PARA CADA IDENTIFICADOR '(' expresion ')' accion {printf("instruccion_bucle ->  PARA CADA IDENTIFICADOR '(' expresion ')' accion\n"); }
                   ;
 
-
-
-////////////////
 
 instruccion_salto : SALTAR IDENTIFICADOR ';' { printf("instruccion_salto -> SALTAR IDENTIFICADOR ';'\n"); }
                   | CONTINUAR ';'  { printf("instruccion_salto -> CONTINUAR ';'\n"); }
@@ -367,7 +331,7 @@ instruccion_vacia : ';' { printf("instruccion_vacia -> ';'\n"); }
 ;
 
 instruccion_lanzamiento_excepcion : LANZA EXCEPCION IDENTIFICADOR ';'
-;
+                                  ; 
 
 instruccion_captura_excepcion : EJECUTA bloque_instrucciones clausulas { printf("instruccion_captura_excepcion -> EJECUTA bloque_instrucciones clausulas\n"); }
 ;
@@ -377,7 +341,6 @@ clausulas : clausulas_excepcion
           | clausula_defecto
 ;
 
-///////////////
 
 v_clausula_excepcion_especifica : v_clausula_excepcion_especifica clausula_excepcion_especifica
                                 |
@@ -386,52 +349,53 @@ v_clausula_excepcion_especifica : v_clausula_excepcion_especifica clausula_excep
 clausulas_excepcion : v_clausula_excepcion_especifica clausula_excepcion_general
 ;
 
-//////////////
 
-clausula_excepcion_especifica : EXCEPCION IDENTIFICADOR bloque_instrucciones 
+clausula_excepcion_especifica : EXCEPCION IDENTIFICADOR bloque_instrucciones { printf("clausula_excepcion_especifica -> EXCEPCION IDENTIFICADOR bloque_instrucciones\n"); }
 ;
 
-clausula_excepcion_general : OTRA EXCEPCION bloque_instrucciones
+clausula_excepcion_general : OTRA EXCEPCION bloque_instrucciones { printf("clausula_excepcion_general -> OTRA EXCEPCION bloque_instrucciones\n"); }
 ;
 
-clausula_defecto : DEFECTO bloque_instrucciones
+clausula_defecto : DEFECTO bloque_instrucciones { printf("clausula_defecto -> DEFECTO bloque_instrucciones\n"); }
 ;
 
 /***************/
 /* expresiones */
 /***************/
 
-expresion_constante : CTC_ENTERA | CTC_REAL | CTC_CADENA | CTC_CARACTER
+expresion_constante : CTC_ENTERA { printf("expresion_constante -> CTC_ENTERA\n"); }
+                    | CTC_REAL { printf("expresion_constante -> CTC_REAL\n"); }
+                    | CTC_CADENA { printf("expresion_constante -> CTC_CADENA\n"); }
+                    | CTC_CARACTER { printf("expresion_constante -> CTC_CARACTER\n"); }
+                    | error '\n' { yyerrok; }
 ;
 
 expresion_indexada : expresion_basica { printf("expresion_indexada -> expresion_basica\n"); }
-                   | expresion_indexada '.' expresion_basica
-                   | expresion_indexada "^." expresion_basica
-                   | expresion_indexada indice
-                   | expresion_indexada "^." indice
+                   | expresion_indexada '.' expresion_basica { printf("expresion_indexada -> expresion_indexada '.' expresion_basica\n"); }
+                   | expresion_indexada "^." expresion_basica { printf("expresion_indexada -> expresion_indexada '^.' expresion_basica\n"); }
+                   | expresion_indexada indice { printf("expresion_indexada -> expresion_indexada indice\n"); }
+                   | expresion_indexada "^." indice { printf("expresion_indexada -> expresion_indexada '^.' indice\n"); }
 ;
 
 expresion_basica : IDENTIFICADOR { printf("expresion_basica -> IDENTIFICADOR\n"); }
-                 | '(' expresion ')'
-                 | '^' expresion_basica
-                 | '\\' expresion_basica
+                 | '(' expresion ')' { printf("expresion_basica -> '(' expresion ')'\n"); }
+                 | '(' ')' { printf("expresion_basica -> '(' ')'\n"); }
+                 | '^' expresion_basica { printf("expresion_basica -> '^' expresion_basica\n"); }
+                 | '\\' expresion_basica { printf("expresion_basica -> '\\' expresion_basica\n"); }
 ;
 
 indice : '[' expresion ']' | '{' expresion '}'
 ;
 
-varias_expresion_por_coma_asterisco : varias_expresion /*{ printf(""); }*/
+varias_expresion_por_coma_asterisco : varias_expresion { printf("varias_expresion_por_coma_asterisco -> varias_expresion\n"); }
                                     ;
-varias_expresion : varias_expresion ',' expresion
-                | expresion
+varias_expresion : varias_expresion ',' expresion { printf("varias_expresion -> varias_expresion ',' expresion\n"); }
+                | expresion { printf("varias_expresion -> expresion\n"); }
                 ;
 
-expresion_funcional : IDENTIFICADOR '(' varias_expresion_por_coma_asterisco ')'
-                    | IDENTIFICADOR '(' ')'
+expresion_funcional : IDENTIFICADOR '(' varias_expresion_por_coma_asterisco ')' { printf("expresion_funcional -> IDENTIFICADOR '(' varias_expresion_por_coma_asterisco ')'\n"); }
+                    | IDENTIFICADOR '(' ')' { printf("expresion_funcional -> IDENTIFICADOR '(' ')'\n"); }
 ;
-
-//Está dando un monton de problemas 
-//mirar las expresiones en el fichero de simple 
 
 expresion : expresion_logica 
           | expresion_logica SI expresion SINO expresion
@@ -445,7 +409,6 @@ expresion_or : expresion_or AND expresion_and { printf("expresion_or -> expresio
              | expresion_and
              ;
 
-//ojo en esta
 expresion_and : expresion_and EQ expresion_igual { printf("expresion_and -> expresion_igual\n"); }
               | expresion_igual
               ;
@@ -459,8 +422,6 @@ expresion_comparacion : expresion_comparacion "==" expresion_orbin { printf("exp
                 | expresion_orbin
                 ;
 
-
-//bien
 expresion_orbin : expresion_orbin '|' expresion_xorbin { printf("expresion_orbin -> expresion_xorbin\n"); }   
                       | expresion_xorbin
                       ;
@@ -491,7 +452,6 @@ expresion_potencia : expresion_potencia "**" expresion_prefija { printf("expresi
                | expresion_prefija
                ;
 
-///aquí falta algo, no estoy muy seguro de lo que
 expresion_prefija : expresion_prefija '~' operandos { printf("expresion_prefija -> operandos\n"); }
                    | expresion_prefija '-' operandos { printf("expresion_prefija -> operandos\n"); }
                    | expresion_prefija '!' operandos { printf("expresion_prefija -> operandos\n"); }
@@ -499,11 +459,9 @@ expresion_prefija : expresion_prefija '~' operandos { printf("expresion_prefija 
                    | operandos
                    ;
 
-//aquí también falta algo
 operandos :  operandos expresion_indexada { printf("operandos -> expresion_indexada\n"); }
                   | expresion_indexada
                   ;
-
 
 %%
 
